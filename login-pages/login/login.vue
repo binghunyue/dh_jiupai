@@ -7,18 +7,35 @@
 		<view class="title">东海久拍拍卖！</view>
 		<u-gap height="120"></u-gap>
 		<u-form :model="form" ref="myInfo" :error-type="errorType" :border-bottom="false">
-			<u-form-item left-icon="/static/images/Robotics_zh@2x.png" :left-icon-style="iconStyle" prop="account" :border-bottom="false"><u-input v-model="form.account" /></u-form-item>
+			<u-form-item left-icon="/static/images/Robotics_zh@2x.png" :left-icon-style="iconStyle" prop="account" :border-bottom="false">
+				<u-input v-model="form.account" placeholder="请输入账号"/>
+			</u-form-item>
 			<u-gap height="30"></u-gap>
-			<u-form-item left-icon="/static/images/Robotics_mm@2x.png" :left-icon-style="iconStyle" prop="password" :border-bottom="false"><u-input v-model="form.password" /></u-form-item>
+			<u-form-item left-icon="/static/images/Robotics_mm@2x.png" :left-icon-style="iconStyle" prop="password" :border-bottom="false">
+				<u-input type="password" v-model="form.password" placeholder="请输入密码"/>
+			</u-form-item>
 			<u-gap height="100"></u-gap>
 			<u-button :custom-style="submitStyle" @click="submit">提交</u-button>
 		</u-form>
 		<u-gap height="50"></u-gap>
 		<view class="u-flex u-row-center footer">
-			<text>注册账号</text>
-			<u-line color="#B2B2B2" direction="col" length="12px" margin="0 10px"/>
-			<text>忘记密码</text>
+			<text @click="registered">注册账号</text>
+			<u-line color="#B2B2B2" direction="col" length="12px" margin="0 20rpx" />
+			<text @click="forgetPassword">忘记密码</text>
 		</view>
+		<u-popup v-model="informBook" mode="center" border-radius="10" width="642" height="940">
+			<view class="u-padding-60 u-text-center">
+				<text class="font-semibold u-font-36">告知书</text>
+				<u-gap height="40"></u-gap>
+				<scroll-view scroll-y="true" class="content">
+					<rich-text nodes=""></rich-text>
+				</scroll-view>
+				<u-gap height="40"></u-gap>
+				<u-button :custom-style="agreeStyle">同意</u-button>
+				<u-gap height="10"></u-gap>
+				<u-button :custom-style="noAgreeStyle" :hair-line="false">不同意</u-button>
+			</view>
+		</u-popup>
 	</view>
 </template>
 
@@ -53,23 +70,42 @@ export default {
 				height: '40rpx',
 				'vertical-align': 'text-bottom'
 			},
-			submitStyle:{
-				'background-color':'#111C3A',
+			submitStyle: {
+				'background-color': '#111C3A',
 				'font-family': 'PingFangSC-Semibold',
-				'font-size': '16px',
-				'color': '#F8F8F8',
-				height:'48px'
-			}
+				'font-size': '32rpx',
+				color: '#F8F8F8',
+				height: '96rpx'
+			},
+			agreeStyle:{
+				'background-color': '#111C3A',
+				'font-family': 'PingFangSC-Semibold',
+				'font-size': '28rpx',
+				color: '#F8F8F8',
+				width:'530rpx',
+				height: '80rpx'
+			},
+			noAgreeStyle:{
+				'background-color': 'transparent',
+				'font-family': 'PingFangSC-Semibold',
+				'font-size': '28rpx',
+				color: '#282828',
+				width:'530rpx',
+				height: '80rpx',
+				border:'none'
+			},
+			informBook:true, // 是否显示告知书弹窗
 		};
 	},
 	onReady() {
 		this.$refs.myInfo.setRules(this.rules);
 	},
 	methods: {
-		goLogin() {
-			uni.navigateTo({
-				url: '../../login-pages/login/login'
-			});
+		registered() {
+			this.$u.route('/login-pages/registered/agreement');
+		},
+		forgetPassword(){
+			this.$u.route('/login-pages/reset-password/reset-password');
 		},
 		submit() {
 			this.$refs.myInfo.validate(valid => {
@@ -84,7 +120,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .login-container {
 	padding: 0 50rpx;
 	.title {
@@ -94,19 +130,22 @@ export default {
 		letter-spacing: 0;
 		line-height: 66rpx;
 	}
-	.u-form-item{
-		background: #F5F9FC;
-		box-shadow: 0 4rpx 10rpx 0 #FFFFFF;
+	.u-form-item {
+		background: #f5f9fc;
+		box-shadow: 0 4rpx 10rpx 0 #ffffff;
 		border-radius: 6rpx;
 		padding: 10rpx 26rpx;
 	}
-	.footer{
-		>text{
-			font-family: PingFangSC-Regular;
+	.footer {
+		> text {
 			font-size: 26rpx;
-			color: #B2B2B2;
+			color: #b2b2b2;
 			letter-spacing: 0;
 		}
+	}
+	.content{
+		width: 532rpx;
+		height: 560rpx;
 	}
 }
 </style>

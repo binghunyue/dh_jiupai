@@ -5,7 +5,8 @@
 	"pages": [{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "东海久拍",
+				"navigationBarBackgroundColor":"#FFFFFF"
 			}
 		},
 		/* 积分商城 */
@@ -28,6 +29,27 @@
 			"style": {
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path":"login-pages/reset-password/reset-password",
+			"style":{
+				"navigationBarTitleText":"重置登录密码",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
+		},
+		{
+			"path":"login-pages/registered/registered",
+			"style":{
+				"navigationBarTitleText":"手机注册",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
+		},
+		{
+			"path":"login-pages/registered/agreement",
+			"style":{
+				"navigationBarTitleText":"注册协议",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
 		}
 	],
 	"tabBar":{
@@ -49,7 +71,7 @@
 			},
 			{
 				"pagePath":"pages/member/member",
-				"iconPath":"static/tab_icon_my_selected@2x.png",
+				"iconPath":"static/images/tab_icon_my_member@2x.png",
 				"selectedIconPath":"static/images/tab_icon_my_member_selected@2x.png",
 				"text":"会员中心"
 			}

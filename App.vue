@@ -28,4 +28,13 @@
 		font-family: "PingFangSC-Regular";
 		src: url('~@/static/fonts/PingFang-Jian-ChangGuiTi.ttf');
 	}
+	.font-semibold{
+		font-family: "PingFangSC-Semibold";
+	}
+	.font-regular{
+		font-family: "PingFangSC-Regular";
+	}
+	body{
+		font-family: 'PingFangSC-Regular';
+	}
 </style>
