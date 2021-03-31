@@ -1,0 +1,67 @@
+{
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		/* 积分商城 */
+		{
+			"path": "pages/integral/integral",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		/* 会员中心 */
+		{
+			"path": "pages/member/member",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		/* 登录 */
+		{
+			"path": "login-pages/login/login",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}
+	],
+	"tabBar":{
+		"color":"#8C8C8C",
+		"selectedColor":"#D72625",
+		"backgroundColor":"#FFFFFF",
+		"list":[
+			{
+				"pagePath":"pages/index/index",
+				"iconPath":"static/images/tab_icon_home_selected@2x.png",
+				"selectedIconPath":"static/images/tab_icon_home@2x.png",
+				"text":"首页"
+			},
+			{
+				"pagePath":"pages/integral/integral",
+				"iconPath":"static/images/tab_icon_integral_selected@2x.png",
+				"selectedIconPath":"static/images/tab_icon_integral@2x.png",
+				"text":"积分商城"
+			},
+			{
+				"pagePath":"pages/member/member",
+				"iconPath":"static/tab_icon_my_selected@2x.png",
+				"selectedIconPath":"static/images/tab_icon_my_member_selected@2x.png",
+				"text":"会员中心"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	}
+}
