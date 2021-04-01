@@ -55,7 +55,16 @@
 		{
 			"path":"other-pages/notice/notice",
 			"style":{
-				"navigationStyle":"custom"
+				"navigationStyle":"custom",
+				"navigationBarTitleText":"公告"
+			}
+		},
+		// 场次
+		{
+			"path":"other-pages/session/list",
+			"style":{
+				"navigationStyle":"custom",
+				"navigationBarTitleText":"场次"
 			}
 		}
 	],

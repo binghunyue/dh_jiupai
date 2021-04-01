@@ -1,6 +1,6 @@
 <template>
 	<view class="notice-container">
-		<u-navbar :is-back="false" title="公告" title-bold title-size="36" title-color="#282828" :border-bottom="false"></u-navbar>
+		<u-navbar :is-back="false" title="公告" title-bold title-size="32" title-color="#282828" :border-bottom="false"></u-navbar>
 		<view class="card-item" v-for="(item, index) in dataList" :key="index">
 			<u-image width="184rpx" height="142rpx" :src="item.image" border-radius="10"></u-image>
 			<view class="item-info">

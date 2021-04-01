@@ -14,13 +14,14 @@
 				<u-gap height="50"></u-gap>
 				<text class="time">{{ item.time }}</text>
 				<u-gap height="30"></u-gap>
-				<view class="image-box">
+				<view class="image-box" @click="goSession(item)">
 					<view class="state">{{ item.state }}</view>
 					<view class="period-time">{{ item.startTime }}-{{ item.endTime }}</view>
 					<u-image width="100%" height="100%" :src="item.image"></u-image>
 				</view>
 			</view>
 		</view>
+		<u-no-network></u-no-network>
 	</view>
 </template>
 
@@ -84,7 +85,12 @@ export default {
 			console.log(e);
 		},
 		goNotice(){
-			this.$u.route('/other-pages/notice/notice')
+			this.$u.route('/other-pages/notice/notice');
+		},
+		goSession({time}){
+			this.$u.route('/other-pages/session/list',{
+				pageTitle:time
+			})
 		}
 	}
 };
