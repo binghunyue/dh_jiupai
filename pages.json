@@ -66,6 +66,13 @@
 				"navigationStyle":"custom",
 				"navigationBarTitleText":"场次"
 			}
+		},
+		{
+			"path":"other-pages/session/detail",
+			"style":{
+				"navigationBarTitleText":"商品详情",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
 		}
 	],
 	"tabBar":{

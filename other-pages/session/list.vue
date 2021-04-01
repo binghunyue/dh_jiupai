@@ -1,40 +1,42 @@
 <template>
 	<view class="session-container">
 		<u-navbar :title="pageTitle" title-bold title-size="32" title-color="#282828" :border-bottom="false"></u-navbar>
-		<view class="serial-number">
-			<u-search placeholder="请输入库号" v-model="keyword" bg-color="#F9FCFE" :show-action="false" height="76"></u-search>
+		<view class="serial-number"><u-search placeholder="请输入库号" v-model="keyword" bg-color="#F9FCFE" :show-action="false" height="76"></u-search></view>
+		<view class="countdown" v-if="!isStart">
+			本场距离开抢还有
+			<u-count-down :timestamp="timestamp" color="#E21A1A" separator-color="#E21A1A" bg-color="transparent" font-size="28"></u-count-down>
 		</view>
 		<u-waterfall v-model="flowList" ref="uWaterfall">
 			<template v-slot:left="{ leftList }">
-				<view class="demo-warter" v-for="(item, index) in leftList" :key="index">
+				<view class="demo-warter" v-for="(item, index) in leftList" :key="index" @click="goDetail(item)">
 					<u-lazy-load threshold="-450" border-radius="10" :image="item.image" :index="index"></u-lazy-load>
 					<view class="demo-title u-line-1">{{ item.title }}</view>
 					<view class="demo-price">¥{{ item.price }}元</view>
 				</view>
 			</template>
 			<template v-slot:right="{ rightList }">
-				<view class="demo-warter" v-for="(item, index) in rightList" :key="index">
+				<view class="demo-warter" v-for="(item, index) in rightList" :key="index" @click="goDetail(item)">
 					<u-lazy-load threshold="-450" border-radius="10" :image="item.image" :index="index"></u-lazy-load>
 					<view class="demo-title u-line-1">{{ item.title }}</view>
 					<view class="demo-price">¥{{ item.price }}元</view>
 				</view>
 			</template>
 		</u-waterfall>
-		<view class="sorter u-flex">
-			<diy-sorter :total="pagination"></diy-sorter>
-		</view>
+		<view class="sorter u-flex"><diy-sorter :total="pagination"></diy-sorter></view>
 	</view>
 </template>
 
 <script>
 import diySorter from '@/components/diy-sorter/diy-sorter.vue';
 export default {
-	components:{diySorter},
+	components: { diySorter },
 	data() {
 		return {
 			keyword: '',
 			flowList: [],
-			pagination:15,
+			pagination: 15,
+			timestamp: 86400,
+			isStart: true,
 			list: [
 				{
 					price: 35,
@@ -118,6 +120,9 @@ export default {
 				item.id = this.$u.guid();
 				this.flowList.push(item);
 			}
+		},
+		goDetail({ id }) {
+			this.$u.route('/other-pages/session/detail', { id });
 		}
 	}
 };
@@ -135,7 +140,17 @@ export default {
 		background: #ffffff;
 		padding: 0 24rpx;
 	}
-	.u-waterfall{
+	.countdown {
+		width: 100%;
+		height: 88rpx;
+		background: rgba(0, 0, 0, 0.04);
+		font-size: 28rpx;
+		font-weight: 400;
+		color: #e21a1a;
+		line-height: 88rpx;
+		text-align: center;
+	}
+	.u-waterfall {
 		padding: 0 24rpx;
 	}
 	.demo-warter {
@@ -170,7 +185,7 @@ export default {
 	.sorter {
 		width: 100vw;
 		height: 100rpx;
-		background: #FFFFFF;
+		background: #ffffff;
 		position: fixed;
 		bottom: 0;
 	}
