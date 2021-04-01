@@ -50,6 +50,13 @@
 				"navigationBarTitleText":"注册协议",
 				"navigationBarBackgroundColor":"#FFFFFF"
 			}
+		},
+		// 公告
+		{
+			"path":"other-pages/notice/notice",
+			"style":{
+				"navigationStyle":"custom"
+			}
 		}
 	],
 	"tabBar":{

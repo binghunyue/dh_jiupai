@@ -6,7 +6,7 @@
 		<view class="announcement u-flex">
 			<u-image width="84rpx" height="36rpx" src="@/static/images/Robotics_gg@2x.png"></u-image>
 			<view class="u-flex-1 u-line-1"><u-notice-bar mode="vertical" :volume-icon="false" :list="noticeList" type="none" color="#282828" duration="3500"></u-notice-bar></view>
-			<u-button size="mini" hover-class="none" :custom-style="moreBtnStyle">更多</u-button>
+			<u-button size="mini" hover-class="none" :custom-style="moreBtnStyle" @click="goNotice">更多</u-button>
 		</view>
 		<!-- 场次 -->
 		<view class="session">
@@ -82,6 +82,9 @@ export default {
 		},
 		clickSwiper(e) {
 			console.log(e);
+		},
+		goNotice(){
+			this.$u.route('/other-pages/notice/notice')
 		}
 	}
 };
