@@ -20,7 +20,8 @@
 		{
 			"path": "pages/member/member",
 			"style": {
-				"navigationStyle": "custom"
+				"navigationBarTitleText":"我的",
+				"navigationStyle":"custom"
 			}
 		},
 		/* 登录 */
