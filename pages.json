@@ -73,6 +73,13 @@
 				"navigationBarTitleText":"商品详情",
 				"navigationBarBackgroundColor":"#FFFFFF"
 			}
+		},
+		{
+			"path":"other-pages/pay/pay",
+			"style":{
+				"navigationBarTitleText":"立即付款",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
 		}
 	],
 	"tabBar":{

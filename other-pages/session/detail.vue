@@ -32,7 +32,7 @@
 				<text class="u-font-32 u-type-info">此操作是本人操作</text>
 				<u-gap height="60"></u-gap>
 				<view class="u-flex">
-					<u-button :hair-line="false" :custom-style="grabSingleAgainBtnStyle">再抢一单</u-button>
+					<u-button :hair-line="false" :custom-style="grabSingleAgainBtnStyle" @click="goGrabSingleAgain">再抢一单</u-button>
 					<u-button :hair-line="false" :custom-style="paymentBtnStyle">去付款</u-button>
 				</view>
 			</view>
@@ -106,6 +106,12 @@ export default {
 		},
 		grabSingle(){
 			this.isShowGrabSinglePop = true;
+		},
+		goGrabSingleAgain(){
+			this.$u.route({
+				type:'navigateBack',
+				delta:1
+			})
 		}
 	}
 };
