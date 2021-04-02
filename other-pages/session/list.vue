@@ -6,7 +6,7 @@
 			本场距离开抢还有
 			<u-count-down :timestamp="timestamp" color="#E21A1A" separator-color="#E21A1A" bg-color="transparent" font-size="28"></u-count-down>
 		</view>
-		<u-waterfall v-model="flowList" ref="uWaterfall">
+		<u-waterfall v-model="flowList" ref="uWaterfall" v-if="flowList.length > 0">
 			<template v-slot:left="{ leftList }">
 				<view class="demo-warter" v-for="(item, index) in leftList" :key="index" @click="goDetail(item)">
 					<u-lazy-load threshold="-450" border-radius="10" :image="item.image" :index="index"></u-lazy-load>
@@ -22,6 +22,7 @@
 				</view>
 			</template>
 		</u-waterfall>
+		<u-empty text="暂无商品" src="/static/images/Empty_bro@2x.png" icon-size="324" :show="flowList.length == 0"></u-empty>
 		<view class="sorter u-flex"><diy-sorter :total="pagination"></diy-sorter></view>
 	</view>
 </template>
