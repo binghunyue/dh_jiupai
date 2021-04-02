@@ -61,12 +61,18 @@
 			<view class="u-flex">
 				<u-image :src="$util.getStaticImg('icon_my_income@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">收款码</text>
+				<view class="u-flex-1 u-text-right">
+					<text class="finished">已完善</text>
+				</view>
 			</view>
 		</view>
 		<view class="card u-m-t-14">
 			<view class="u-flex">
 				<u-image :src="$util.getStaticImg('icon_my_zl@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">完善资料</text>
+				<view class="u-flex-1 u-text-right">
+					<text class="unfinished">待认证</text>
+				</view>
 			</view>
 			<u-line margin="29rpx 0"></u-line>
 			<view class="u-flex">
@@ -121,5 +127,19 @@ export default {
 	margin: auto;
 	z-index: 1;
 	padding: 40rpx 30rpx 30rpx;
+	.unfinished{
+		font-size: 24rpx;
+		padding: 4rpx 12rpx;
+		border: 2rpx solid #E21A1A;
+		border-radius: 6rpx;
+		color: #E21A1A;
+	}
+	.finished{
+		font-size: 24rpx;
+		padding: 4rpx 12rpx;
+		border: 2rpx solid #8C8C8C;
+		border-radius: 6rpx;
+		color: #8C8C8C;
+	}
 }
 </style>
