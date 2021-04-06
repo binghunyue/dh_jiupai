@@ -83,6 +83,13 @@
 			}
 		},
 		{
+			"path":"other-pages/pay/collection",
+			"style":{
+				"navigationBarTitleText":"待确认收款",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
+		},
+		{
 			"path":"other-pages/order/buy-order",
 			"style":{
 				"navigationBarTitleText":"我的买单",
