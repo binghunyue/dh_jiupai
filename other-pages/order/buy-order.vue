@@ -186,7 +186,7 @@ export default {
 
 <style lang="scss">
 .buy-order-container {
-	background: #fafafa;
+	background: $u-bg-color;
 }
 .swiper-box {
 	height: calc(100vh - 100rpx - var(--status-bar-height) - var(--window-top)) !important;

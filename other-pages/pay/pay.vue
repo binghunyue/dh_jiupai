@@ -95,7 +95,7 @@ export default {
 .pay-container {
 	width: 100vw;
 	min-height: calc(100vh - var(--status-bar-height) - var(--window-top));
-	background: #fafafa;
+	background: $u-bg-color;
 	margin-bottom: 120rpx;
 	overflow: hidden;
 }

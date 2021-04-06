@@ -109,6 +109,13 @@
 				"navigationBarTitleText":"已完成/待转拍",
 				"navigationBarBackgroundColor":"#FFFFFF"
 			}
+		},
+		{
+			"path":"other-pages/earnings/detail",
+			"style":{
+				"navigationBarTitleText":"明细",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
 		}
 	],
 	"tabBar":{

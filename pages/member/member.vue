@@ -42,18 +42,18 @@
 			</u-row>
 		</view>
 		<view class="card u-m-t-14">
-			<view class="u-flex" @click="goBuyOrder">
+			<view class="u-flex" @click="goToPage('buyOrder')">
 				<u-image :src="$util.getStaticImg('buy_icon@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">我的买单</text>
 			</view>
 			<u-line margin="29rpx 0"></u-line>
-			<view class="u-flex" @click="goSellOrder">
+			<view class="u-flex" @click="goToPage('sellOrder')">
 				<u-image :src="$util.getStaticImg('sell_icon@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">我的卖单</text>
 			</view>
 		</view>
 		<view class="card u-m-t-14">
-			<view class="u-flex">
+			<view class="u-flex" @click="goToPage('earnings')">
 				<u-image :src="$util.getStaticImg('icon_my_incom@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">收益</text>
 			</view>
@@ -61,18 +61,14 @@
 			<view class="u-flex">
 				<u-image :src="$util.getStaticImg('icon_my_income@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">收款码</text>
-				<view class="u-flex-1 u-text-right">
-					<text class="finished">已完善</text>
-				</view>
+				<view class="u-flex-1 u-text-right"><text class="finished">已完善</text></view>
 			</view>
 		</view>
 		<view class="card u-m-t-14">
 			<view class="u-flex">
 				<u-image :src="$util.getStaticImg('icon_my_zl@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">完善资料</text>
-				<view class="u-flex-1 u-text-right">
-					<text class="unfinished">待认证</text>
-				</view>
+				<view class="u-flex-1 u-text-right"><text class="unfinished">待认证</text></view>
 			</view>
 			<u-line margin="29rpx 0"></u-line>
 			<view class="u-flex">
@@ -103,12 +99,26 @@ export default {
 			}
 		};
 	},
-	methods:{
-		goBuyOrder(){
+	methods: {
+		goBuyOrder() {
 			this.$u.route('/other-pages/order/buy-order');
 		},
-		goSellOrder(){
+		goSellOrder() {
 			this.$u.route('/other-pages/order/sell-order');
+		},
+		/* 跳转到对应的页面 */
+		goToPage(type) {
+			switch (type) {
+				case 'earnings':
+					this.$u.route('/other-pages/earnings/detail');
+					break;
+				case 'buyOrder':
+					this.$u.route('/other-pages/order/buy-order');
+					break;
+				case 'sellOrder':
+					this.$u.route('/other-pages/order/sell-order');
+					break;
+			}
 		}
 	}
 };
@@ -117,7 +127,7 @@ export default {
 <style lang="scss">
 .member-container {
 	width: 100vw;
-	background: #fafafa;
+	background: $u-bg-color;
 }
 .palette {
 	width: 100vw;
@@ -135,19 +145,19 @@ export default {
 	margin: auto;
 	z-index: 1;
 	padding: 40rpx 30rpx 30rpx;
-	.unfinished{
+	.unfinished {
 		font-size: 24rpx;
 		padding: 4rpx 12rpx;
-		border: 2rpx solid #E21A1A;
+		border: 2rpx solid #e21a1a;
 		border-radius: 6rpx;
-		color: #E21A1A;
+		color: #e21a1a;
 	}
-	.finished{
+	.finished {
 		font-size: 24rpx;
 		padding: 4rpx 12rpx;
-		border: 2rpx solid #8C8C8C;
+		border: 2rpx solid #8c8c8c;
 		border-radius: 6rpx;
-		color: #8C8C8C;
+		color: #8c8c8c;
 	}
 }
 </style>

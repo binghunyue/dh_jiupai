@@ -121,7 +121,7 @@ export default {
 .session-container {
 	width: 100vw;
 	min-height: calc(100vh - var(--status-bar-height) - var(--window-top));
-	background: #fafafa;
+	background: $u-bg-color;
 	overflow: hidden;
 }
 .info-box {
