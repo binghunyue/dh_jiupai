@@ -102,6 +102,13 @@
 				"navigationBarTitleText":"我的卖单",
 				"navigationBarBackgroundColor":"#FFFFFF"
 			}
+		},
+		{
+			"path":"other-pages/order/completed-order",
+			"style":{
+				"navigationBarTitleText":"已完成/待转拍",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
 		}
 	],
 	"tabBar":{

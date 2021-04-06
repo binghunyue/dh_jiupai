@@ -1,5 +1,5 @@
 <template>
-	<view class="pay-container">
+	<view class="completed-order-container">
 		<view class="cell">
 			<diy-cell title="预留手机号：" value="18888888888"></diy-cell>
 			<diy-cell title="商品全称：" value="苟成文《上市送达》赏打JB100817 苟成文《上市送达》赏打苟成文《上市送达》赏打JB100817 苟成文《上市送达》赏打"></diy-cell>
@@ -22,14 +22,11 @@
 					<text class="copy" @click="$util.copy('3232341212412123124131')">复制</text>
 				</view>
 			</diy-cell>
-			<diy-cell title="打款凭证：" :isShowBottom="false">
-				<u-image width="512" height="686"></u-image>
-			</diy-cell>
+			<diy-cell title="上传凭证：" :isShowBottom="false"><u-upload :action="action" upload-text="选择凭证"></u-upload></diy-cell>
 		</view>
 		<view class="footer u-flex">
-			<u-button :custom-style="phoneBtnStyle" :hair-line="false">电话联系12222222222</u-button>
-			<u-button :custom-style="payBtnStyle" :hair-line="false" v-if="type == 'default'">确认收款</u-button>
-			<u-button :custom-style="payBtnStyle" :hair-line="false" v-if="type == 'confirm'" :disabled="true">等待对方确认收款</u-button>
+			<u-button type="error" :custom-style="btnSize">去提货</u-button>
+			<u-button type="success" :custom-style="btnSize">去转拍</u-button>
 		</view>
 	</view>
 </template>
@@ -44,26 +41,29 @@ export default {
 		return {
 			action: 'http://www.example.com', // 演示地址
 			payList: ['Robotics_yl@2x.png', 'Robotics_wx@2x.png', 'Robotics_zfb@2x.png'],
-			phoneBtnStyle: {
-				width: '338rpx',
-				height: '90rpx',
-				'background-color': '#F5F9FC',
-				color: '#0DB5E7',
-				border: 'none'
+			selectPay: 0,
+			paymentBtnStyle: {
+				width: '116rpx',
+				height: '58rpx',
+				'margin-right': '20rpx'
 			},
-			payBtnStyle: {
+			activePayBtnStyle: {
+				width: '116rpx',
+				height: '58rpx',
+				'margin-right': '20rpx',
+				'background-color': '#111C3A',
+				color: '#F8F8F8'
+			},
+			btnSize: {
 				width: '338rpx',
-				height: '90rpx',
-				'background-color': '#E21A1A',
-				color: '#F8F8F8',
-				border: 'none'
-			}
+				height: '90rpx'
+			},
 		};
 	},
-	onLoad({type}) {
-		this.type = type;
-	},
-	methods:{
+	methods: {
+		selectpayment(index) {
+			this.selectPay = index;
+		}
 	}
 };
 </script>
@@ -83,11 +83,11 @@ export default {
 	box-shadow: 0px 4rpx 8rpx 0px rgba(224, 215, 215, 0.15);
 	border-radius: 6rpx;
 	padding: 0 16rpx;
-	.copy{
+	.copy {
 		padding: 2rpx 18rpx;
-		border: 2rpx solid #FE3C5E;
+		border: 2rpx solid #fe3c5e;
 		border-radius: 4rpx;
-		color: #FE3C5E;
+		color: #fe3c5e;
 		font-size: 26rpx;
 	}
 }

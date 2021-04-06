@@ -11,14 +11,30 @@
 			<diy-cell title="预留手机号：" value="18888888888"></diy-cell>
 			<diy-cell title="付款方式：">
 				<view class="value">
-					<u-button size="mini" :custom-style="selectPay == index ? activePayBtnStyle : paymentBtnStyle" v-for="(item, index) in payList" :key="index" @click="selectpayment(index)">
+					<u-button
+						size="mini"
+						:custom-style="selectPay == index ? activePayBtnStyle : paymentBtnStyle"
+						v-for="(item, index) in payList"
+						:key="index"
+						@click="selectpayment(index)"
+					>
 						{{ item }}
 					</u-button>
 				</view>
 			</diy-cell>
 			<diy-cell title="开户行：" value="邮政储蓄"></diy-cell>
-			<diy-cell title="姓名：" value="啦啦啦"></diy-cell>
-			<diy-cell title="账号：" value="3232341212412123124131"></diy-cell>
+			<diy-cell title="姓名：">
+				<view class="u-flex u-row-between">
+					<text>啦啦啦</text>
+					<text class="copy" @click="$util.copy('啦啦啦')">复制</text>
+				</view>
+			</diy-cell>
+			<diy-cell title="账号：">
+				<view class="u-flex u-row-between">
+					<text>3232341212412123124131</text>
+					<text class="copy" @click="$util.copy('3232341212412123124131')">复制</text>
+				</view>
+			</diy-cell>
 			<diy-cell title="上传凭证：" :isShowBottom="false"><u-upload :action="action" upload-text="选择凭证"></u-upload></diy-cell>
 		</view>
 		<view class="footer u-flex">
@@ -67,8 +83,8 @@ export default {
 			}
 		};
 	},
-	methods:{
-		selectpayment(index){
+	methods: {
+		selectpayment(index) {
 			this.selectPay = index;
 		}
 	}
@@ -90,6 +106,13 @@ export default {
 	box-shadow: 0px 4rpx 8rpx 0px rgba(224, 215, 215, 0.15);
 	border-radius: 6rpx;
 	padding: 0 16rpx;
+	.copy {
+		padding: 2rpx 18rpx;
+		border: 2rpx solid #fe3c5e;
+		border-radius: 4rpx;
+		color: #fe3c5e;
+		font-size: 26rpx;
+	}
 }
 .footer {
 	width: 100vw;

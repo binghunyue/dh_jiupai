@@ -45,8 +45,8 @@
 						<view class="operation u-flex">
 							<text class="u-flex-1">{{ item.time }}</text>
 							<u-button shape="circle" :custom-style="grayBtnStyle" v-if="item.status == '待被买'">待被买</u-button>
-							<u-button shape="circle" :custom-style="redBtnStyle" v-else-if="item.status == '待收款'">待收款</u-button>
-							<u-button shape="circle" :custom-style="redBtnStyle" v-else-if="item.status == '待确认收款'" @click="goCollection">待确认收款</u-button>
+							<u-button shape="circle" :custom-style="redBtnStyle" v-else-if="item.status == '待收款'" @click="goCollection('default')">待收款</u-button>
+							<u-button shape="circle" :custom-style="redBtnStyle" v-else-if="item.status == '待确认收款'" @click="goCollection('confirm')">待确认收款</u-button>
 							<u-button shape="circle" :custom-style="redBtnStyle" v-else-if="item.status == '已完成'">已完成</u-button>
 						</view>
 					</view>
@@ -166,8 +166,8 @@ export default {
 		},
 		// scroll-view到底部加载更多
 		onreachBottom() {},
-		goCollection() {
-			this.$u.route('/other-pages/pay/collection');
+		goCollection(type) {
+			this.$u.route('/other-pages/pay/collection',{type});
 		}
 	}
 };

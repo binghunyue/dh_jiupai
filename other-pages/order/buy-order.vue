@@ -24,7 +24,7 @@
 							<text>订单号:{{ item.orderNum }}</text>
 							<text>{{ item.status }}</text>
 						</view>
-						<view class="content u-flex">
+						<view class="content u-flex" @click="goPage(item)">
 							<u-image :src="item.imageUrl" width="190" height="190" border-radius="10"></u-image>
 							<view class="u-m-l-20 u-flex-1 u-flex-col u-row-between" style="height: 180rpx;">
 								<view class="u-flex u-row-between font-semibold">
@@ -172,6 +172,13 @@ export default {
 		onreachBottom() {},
 		goPay() {
 			this.$u.route('/other-pages/pay/pay');
+		},
+		goPage({ status }) {
+			switch (status) {
+				case '已完成/待转拍':
+					this.$u.route('/other-pages/order/completed-order');
+					break;
+			}
 		}
 	}
 };
