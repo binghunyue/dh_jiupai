@@ -10,9 +10,7 @@
 			<diy-cell title="下单时间：" value="2021-03-01 09:24:22"></diy-cell>
 			<diy-cell title="预留手机号：" value="18888888888"></diy-cell>
 			<diy-cell title="付款方式：">
-				<view class="u-flex">
-					<u-image :src="$util.getStaticImg(item)" v-for="(item, index) in payList" :key="index" height="54" mode="heightFix"></u-image>
-				</view>
+				<view class="u-flex"><u-image :src="$util.getStaticImg(item)" v-for="(item, index) in payList" :key="index" height="54" mode="heightFix"></u-image></view>
 			</diy-cell>
 			<diy-cell title="开户行：" value="邮政储蓄"></diy-cell>
 			<diy-cell title="姓名：" value="啦啦啦"></diy-cell>
@@ -28,6 +26,18 @@
 			<u-button type="error" :custom-style="btnSize">去提货</u-button>
 			<u-button type="success" :custom-style="btnSize">去转拍</u-button>
 		</view>
+		<u-popup v-model="prompt" mode="center" border-radius="10" width="642" height="642">
+			<view class="u-padding-60 u-text-center">
+				<text class="font-semibold u-font-36">提示</text>
+				<u-gap height="40"></u-gap>
+				<scroll-view scroll-y="true" class="content"><rich-text nodes=""></rich-text></scroll-view>
+				<u-gap height="40"></u-gap>
+				<view class="u-flex">
+					<u-button :custom-style="noAgreeStyle" :hair-line="false" @click="prompt = false">取消</u-button>
+					<u-button :custom-style="agreeStyle">确认</u-button>
+				</view>
+			</view>
+		</u-popup>
 	</view>
 </template>
 
@@ -58,6 +68,24 @@ export default {
 				width: '338rpx',
 				height: '90rpx'
 			},
+			prompt: true,
+			agreeStyle: {
+				'background-color': '#111C3A',
+				'font-family': 'PingFangSC-Semibold',
+				'font-size': '28rpx',
+				color: '#F8F8F8',
+				width: '244rpx',
+				height: '80rpx'
+			},
+			noAgreeStyle: {
+				'background-color': '#F5F9FC',
+				'font-family': 'PingFangSC-Semibold',
+				'font-size': '28rpx',
+				color: '#282828',
+				width: '244rpx',
+				height: '80rpx',
+				border: 'none'
+			}
 		};
 	},
 	methods: {
@@ -98,5 +126,9 @@ export default {
 	bottom: 0;
 	left: 0;
 	background: #ffffff;
+}
+.content {
+	width: 532rpx;
+	height: 280rpx;
 }
 </style>
