@@ -88,6 +88,13 @@
 				"navigationBarTitleText":"我的买单",
 				"navigationBarBackgroundColor":"#FFFFFF"
 			}
+		},
+		{
+			"path":"other-pages/order/sell-order",
+			"style":{
+				"navigationBarTitleText":"我的卖单",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
 		}
 	],
 	"tabBar":{

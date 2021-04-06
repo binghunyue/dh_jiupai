@@ -47,7 +47,7 @@
 				<text class="u-p-l-34">我的买单</text>
 			</view>
 			<u-line margin="29rpx 0"></u-line>
-			<view class="u-flex">
+			<view class="u-flex" @click="goSellOrder">
 				<u-image :src="$util.getStaticImg('sell_icon@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">我的卖单</text>
 			</view>
@@ -106,6 +106,9 @@ export default {
 	methods:{
 		goBuyOrder(){
 			this.$u.route('/other-pages/order/buy-order');
+		},
+		goSellOrder(){
+			this.$u.route('/other-pages/order/sell-order');
 		}
 	}
 };
