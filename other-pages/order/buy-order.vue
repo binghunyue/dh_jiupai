@@ -45,7 +45,7 @@
 							<u-button shape="circle" :custom-style="grayBtnStyle" v-if="item.status == '已取消'">已取消</u-button>
 							<block v-else-if="item.status == '待付款'">
 								<u-button shape="circle" :custom-style="redBtnStyle">取消订单</u-button>
-								<u-button shape="circle" :custom-style="redBtnStyle">待付款</u-button>
+								<u-button shape="circle" :custom-style="redBtnStyle" @click="goPay">待付款</u-button>
 							</block>
 							<u-button shape="circle" :custom-style="redBtnStyle" v-else-if="item.status == '已付款'">已付款</u-button>
 							<block v-else-if="item.status == '已完成/待转拍'">
@@ -54,17 +54,19 @@
 							</block>
 						</view>
 					</view>
-					<u-gap height="20"></u-gap>
-					<u-loadmore :status="status" />
-					<u-gap height="20"></u-gap>
+					<u-gap height="110"></u-gap>
 				</scroll-view>
 			</swiper-item>
 		</swiper>
+		<u-empty text="暂无订单" src="/static/images/Empty_bro@2x.png" icon-size="324" :show="dataList.length == 0"></u-empty>
+		<view class="sorter u-flex"><diy-sorter :total="pagination"></diy-sorter></view>
 	</view>
 </template>
 
 <script>
+import diySorter from '@/components/diy-sorter/diy-sorter.vue';
 export default {
+	components: { diySorter },
 	data() {
 		return {
 			list: [
@@ -84,7 +86,6 @@ export default {
 					name: '已完成/待转拍'
 				}
 			],
-			status: 'loadmore',
 			// 因为内部的滑动机制限制，请将tabs组件和swiper组件的current用不同变量赋值
 			current: 0, // tabs组件的current值，表示当前活动的tab选项
 			swiperCurrent: 0, // swiper组件的current值，表示当前那个swiper-item是活动的
@@ -138,14 +139,15 @@ export default {
 				'font-family': 'PingFangSC-Semibold',
 				'font-size': '28rpx'
 			},
-			greenBtnStyle:{
+			greenBtnStyle: {
 				height: '64rpx',
 				margin: '0 0 0 20rpx',
 				padding: '12rpx 24rpx',
 				color: '#008100',
 				'font-family': 'PingFangSC-Semibold',
 				'font-size': '28rpx'
-			}
+			},
+			pagination: 4
 		};
 	},
 	methods: {
@@ -167,7 +169,10 @@ export default {
 			this.current = current;
 		},
 		// scroll-view到底部加载更多
-		onreachBottom() {}
+		onreachBottom() {},
+		goPay() {
+			this.$u.route('/other-pages/pay/pay');
+		}
 	}
 };
 </script>
@@ -193,5 +198,12 @@ export default {
 			}
 		}
 	}
+}
+.sorter {
+	width: 100vw;
+	height: 100rpx;
+	background: #ffffff;
+	position: fixed;
+	bottom: 0;
 }
 </style>
