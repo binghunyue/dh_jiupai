@@ -81,6 +81,13 @@
 				"navigationBarTitleText":"立即付款",
 				"navigationBarBackgroundColor":"#FFFFFF"
 			}
+		},
+		{
+			"path":"other-pages/order/buy-order",
+			"style":{
+				"navigationBarTitleText":"我的买单",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
 		}
 	],
 	"tabBar":{

@@ -42,7 +42,7 @@
 			</u-row>
 		</view>
 		<view class="card u-m-t-14">
-			<view class="u-flex">
+			<view class="u-flex" @click="goBuyOrder">
 				<u-image :src="$util.getStaticImg('buy_icon@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">我的买单</text>
 			</view>
@@ -102,6 +102,11 @@ export default {
 				background: '#0C1E3C'
 			}
 		};
+	},
+	methods:{
+		goBuyOrder(){
+			this.$u.route('/other-pages/order/buy-order');
+		}
 	}
 };
 </script>
