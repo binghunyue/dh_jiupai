@@ -65,7 +65,7 @@
 			</view>
 		</view>
 		<view class="card u-m-t-14">
-			<view class="u-flex">
+			<view class="u-flex" @click="goToPage('perfect-info')">
 				<u-image :src="$util.getStaticImg('icon_my_zl@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">完善资料</text>
 				<view class="u-flex-1 u-text-right"><text class="unfinished">待认证</text></view>
@@ -120,6 +120,9 @@ export default {
 					break;
 				case 'address':
 					this.$u.route('/other-pages/address/address');
+					break;
+				case 'perfect-info':
+					this.$u.route('/other-pages/perfect-information/perfect-information');
 					break;
 			}
 		}
