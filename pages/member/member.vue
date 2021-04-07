@@ -35,7 +35,7 @@
 					</view>
 					<u-line direction="col" length="24"></u-line>
 				</u-col>
-				<u-col span="4" justify="center" class="u-flex">
+				<u-col span="4" justify="center" class="u-flex" @click="goToPage('transfer')">
 					<u-image :src="$util.getStaticImg('make_over@2x.png')" width="44" height="44"></u-image>
 					<text class="u-font-22 u-p-l-14">转让积分</text>
 				</u-col>
@@ -123,6 +123,9 @@ export default {
 					break;
 				case 'perfect-info':
 					this.$u.route('/other-pages/perfect-information/perfect-information');
+					break;
+				case 'transfer':
+					this.$u.route('/other-pages/transfer/transfer');
 					break;
 			}
 		}

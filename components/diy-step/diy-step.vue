@@ -1,15 +1,10 @@
 <template>
 	<view class="u-flex" :style="{ transform: 'translateX(' + setMove + ')' }">
-		<view
-			class="step-item"
-			v-for="(item, index) in stepsList"
-			:key="index"
-			:class="{ first: index == 0, 'no-border': activeIndex >= index }"
-		>
+		<view class="step-item" v-for="(item, index) in stepsList" :key="index" :class="{ first: index == 0, 'no-border': activeIndex >= index }">
 			<u-image :src="$util.getStaticImg('icon_review_initiate_success@2x.png')" width="48" height="48" v-if="activeIndex >= index"></u-image>
 			<text v-else>{{ index + 1 }}</text>
 			<text class="name" :class="{ active: activeIndex >= index }">{{ item.name }}</text>
-			<view class="line" :class="{'no-line':index == stepsList.length -1}"></view>
+			<view class="line" :class="{ 'no-line': index == stepsList.length - 1 }"></view>
 		</view>
 	</view>
 </template>
@@ -36,7 +31,7 @@ export default {
 		setMove() {
 			let move = 0;
 			if (this.activeIndex > 0 && this.activeIndex < 3) move = 120 * this.activeIndex;
-			if(this.activeIndex >= 3) move = 120 * 3;
+			if (this.activeIndex >= 3) move = 120 * 3;
 			return move * -2 + 'rpx';
 		}
 	}
@@ -80,8 +75,8 @@ export default {
 		right: -176rpx;
 		top: 50%;
 		transform: translateY(-50%);
-		&.no-line{
-			background-color:transparent;
+		&.no-line {
+			background-color: transparent;
 		}
 	}
 }

@@ -139,6 +139,13 @@
 				"navigationBarBackgroundColor":"#0C1E3C",
 				"navigationBarTextStyle":"white"
 			}
+		},
+		{
+			"path":"other-pages/transfer/transfer",
+			"style":{
+				"navigationBarTitleText":"账户互转",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
 		}
 	],
 	"tabBar":{
