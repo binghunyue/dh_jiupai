@@ -116,6 +116,21 @@
 				"navigationBarTitleText":"明细",
 				"navigationBarBackgroundColor":"#FFFFFF"
 			}
+		},
+		{
+			"path":"other-pages/address/address",
+			"style":{
+				"navigationBarTitleText":"我的收货地址",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
+		},
+		{
+			"path":"other-pages/address/edit-address",
+			"style":{
+				"navigationBarTitleText":"收货地址",
+				"navigationBarBackgroundColor":"#FFFFFF",
+				"navigationStyle":"custom"
+			}
 		}
 	],
 	"tabBar":{

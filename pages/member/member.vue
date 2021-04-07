@@ -71,7 +71,7 @@
 				<view class="u-flex-1 u-text-right"><text class="unfinished">待认证</text></view>
 			</view>
 			<u-line margin="29rpx 0"></u-line>
-			<view class="u-flex">
+			<view class="u-flex" @click="goToPage('address')">
 				<u-image :src="$util.getStaticImg('shipping_address@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">收货地址</text>
 			</view>
@@ -117,6 +117,9 @@ export default {
 					break;
 				case 'sellOrder':
 					this.$u.route('/other-pages/order/sell-order');
+					break;
+				case 'address':
+					this.$u.route('/other-pages/address/address');
 					break;
 			}
 		}
