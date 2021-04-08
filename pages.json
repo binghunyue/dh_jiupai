@@ -111,6 +111,13 @@
 			}
 		},
 		{
+			"path": "other-pages/order/pick-up-goods-order",
+			"style": {
+				"navigationBarTitleText": "我的订单",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		},
+		{
 			"path": "other-pages/earnings/detail",
 			"style": {
 				"navigationBarTitleText": "明细",

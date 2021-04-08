@@ -82,7 +82,7 @@
 				<text class="u-p-l-34">邀请好友</text>
 			</view>
 			<u-line margin="29rpx 0"></u-line>
-			<view class="u-flex">
+			<view class="u-flex" @click="goToPage('pickUp')">
 				<u-image :src="$util.getStaticImg('order@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">提货订单</text>
 			</view>
@@ -130,6 +130,9 @@ export default {
 					break;
 				case 'paymentCode':
 					this.$u.route('/other-pages/update-payment/wechat');
+					break;
+				case 'pickUp':
+					this.$u.route('/other-pages/order/pick-up-goods-order');
 					break;
 			}
 		},
