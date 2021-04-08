@@ -155,8 +155,27 @@
 				"navigationBarBackgroundColor": "#0C1E3C",
 				"navigationBarTextStyle": "white"
 			}
-		}
-	],
+		},
+		{
+			"path": "other-pages/update-trade-password/update-trade-password",
+			"style": {
+				"navigationBarTitleText": "修改交易密码",
+				"enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#0C1E3C",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+            "path" : "other-pages/agreement/agreement",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "平台协议",
+				"navigationBarBackgroundColor": "#FFFFFF",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"tabBar": {
 		"color": "#8C8C8C",
 		"selectedColor": "#D72625",

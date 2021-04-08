@@ -12,9 +12,9 @@
 				<u-cell-item title="昵称" :title-style="{color:'#282828'}"></u-cell-item>
 				<u-cell-item title="联系人手机号" :title-style="{color:'#282828'}"></u-cell-item>
 				<u-cell-item title="登录密码" :title-style="{color:'#282828'}"></u-cell-item>
-				<u-cell-item title="交易密码" :title-style="{color:'#282828'}"></u-cell-item>
+				<u-cell-item title="交易密码" :title-style="{color:'#282828'}" @click="goUpdateTradePassword"></u-cell-item>
 				<u-cell-item title="清除缓存" :title-style="{color:'#282828'}"></u-cell-item>
-				<u-cell-item title="平台协议" :title-style="{color:'#282828'}" :border-bottom="false"></u-cell-item>
+				<u-cell-item title="平台协议" :title-style="{color:'#282828'}" :border-bottom="false" @click="goAgreement"></u-cell-item>
 			</u-cell-group>
 		</view>
 		<view class="footer">
@@ -32,6 +32,14 @@ export default {
 				height:'90rpx'
 			}
 		};
+	},
+	methods:{
+		goUpdateTradePassword(){
+			this.$u.route('/other-pages/update-trade-password/update-trade-password')
+		},
+		goAgreement(){
+			this.$u.route('/other-pages/agreement/agreement')
+		}
 	}
 };
 </script>
