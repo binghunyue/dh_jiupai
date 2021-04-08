@@ -52,6 +52,11 @@
 					'font-size': '28rpx'
 				},
 			}
+		},
+		methods:{
+			submit(){
+				console.log('22');
+			}
 		}
 	}
 </script>

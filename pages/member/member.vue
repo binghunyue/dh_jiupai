@@ -2,7 +2,7 @@
 	<view class="member-container u-relative">
 		<u-navbar :is-back="false" title="我的" :background="navBackground" title-color="#F8F8F8" :border-bottom="false">
 			<template #right>
-				<u-image :src="$util.getStaticImg('set@2x.png')" width="36" height="36" class="u-m-r-30"></u-image>
+				<u-image :src="$util.getStaticImg('set@2x.png')" width="36" height="36" class="u-m-r-30" @click="goToPage('set')"></u-image>
 			</template>
 		</u-navbar>
 		<view class="palette"></view>
@@ -126,6 +126,9 @@ export default {
 					break;
 				case 'transfer':
 					this.$u.route('/other-pages/transfer/transfer');
+					break;
+				case 'set':
+					this.$u.route('/other-pages/set/set');
 					break;
 			}
 		}

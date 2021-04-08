@@ -105,15 +105,6 @@ export default {
 			font-size: 22rpx;
 			color: #8c8c8c;
 			margin-right: 26rpx;
-
-			image {
-				width: 52rpx;
-				height: 52rpx;
-			}
-
-			.default {
-				padding-left: 10rpx;
-			}
 		}
 
 		.address-item-top {
