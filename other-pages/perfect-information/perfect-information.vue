@@ -169,7 +169,7 @@ export default {
 		return {
 			action: 'http://www.example.com/upload',
 			showUploadList: false,
-			activeIndex: 5,
+			activeIndex: 0,
 			stepsList: [{ name: '实名认证' }, { name: '绑定交易密码' }, { name: '绑定银行卡' }, { name: '绑定支付宝' }, { name: '绑定微信' }, { name: '完成' }],
 			submitBtnStyle: {
 				position: 'absolute',

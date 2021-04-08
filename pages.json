@@ -175,6 +175,17 @@
             }
             
         }
+        ,{
+            "path" : "other-pages/update-payment/wechat",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改微信收款方式",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#0C1E3C",
+				"navigationBarTextStyle": "white"
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#8C8C8C",

@@ -29,7 +29,7 @@
 				</u-col>
 				<u-col span="4" justify="between" class="u-flex">
 					<u-line direction="col" length="24"></u-line>
-					<view class="u-flex u-row-center">
+					<view class="u-flex u-row-center" @click="modalShow = true">
 						<u-image :src="$util.getStaticImg('subscribe@2x.png')" width="44" height="44"></u-image>
 						<text class="u-font-22 u-p-l-14">预约</text>
 					</view>
@@ -58,7 +58,7 @@
 				<text class="u-p-l-34">收益</text>
 			</view>
 			<u-line margin="29rpx 0"></u-line>
-			<view class="u-flex">
+			<view class="u-flex" @click="goToPage('paymentCode')">
 				<u-image :src="$util.getStaticImg('icon_my_income@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">收款码</text>
 				<view class="u-flex-1 u-text-right"><text class="finished">已完善</text></view>
@@ -87,6 +87,8 @@
 				<text class="u-p-l-34">提货订单</text>
 			</view>
 		</view>
+		<!-- 预约弹窗 -->
+		<u-modal v-model="modalShow" :content="content" :show-cancel-button="true" @cancel="modalShow = false" @confirm="appointment"></u-modal>
 	</view>
 </template>
 
@@ -96,16 +98,12 @@ export default {
 		return {
 			navBackground: {
 				background: '#0C1E3C'
-			}
+			},
+			modalShow:false,
+			content:'确定进行预约吗'
 		};
 	},
 	methods: {
-		goBuyOrder() {
-			this.$u.route('/other-pages/order/buy-order');
-		},
-		goSellOrder() {
-			this.$u.route('/other-pages/order/sell-order');
-		},
 		/* 跳转到对应的页面 */
 		goToPage(type) {
 			switch (type) {
@@ -130,7 +128,14 @@ export default {
 				case 'set':
 					this.$u.route('/other-pages/set/set');
 					break;
+				case 'paymentCode':
+					this.$u.route('/other-pages/update-payment/wechat');
+					break;
 			}
+		},
+		// 预约
+		appointment(){
+			console.log('点击了预约');
 		}
 	}
 };
