@@ -1,11 +1,11 @@
 <template>
 	<view class="payment-wechat-container">
 		<u-gap height="30"></u-gap>
-		<view class="u-flex tab-box">
+		<!-- <view class="u-flex tab-box">
 			<view v-for="(item,index) in tabsList" :key="index" class="tab-item" :class="{active:activeIndex == index}">
 				{{item}}
 			</view>
-		</view>
+		</view> -->
 		<text class="u-type-error u-font-24">风险提示：转拍属于C2C交易，资金不经过平台，平台不会自动扣款，需要您手动自行转账给对方，对方才能收到款项。</text>
 		<view class="card u-flex u-p-t-30 u-p-b-30 u-m-t-30">
 			<text class="u-m-r-32">微信收款码</text>

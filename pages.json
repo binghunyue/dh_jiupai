@@ -181,8 +181,8 @@
                 "enablePullDownRefresh": false
             }
             
-        }
-        ,{
+        },
+		{
             "path" : "other-pages/update-payment/wechat",
             "style" :                                                                                    
             {
@@ -191,8 +191,25 @@
 				"navigationBarBackgroundColor": "#0C1E3C",
 				"navigationBarTextStyle": "white"
             }
-            
-        }
+        },
+		{
+		    "path" : "other-pages/share/share",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "分享中心",
+		        "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#FFFFFF"
+		    }
+		},
+		{
+		    "path" : "other-pages/withdrawal/commission",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "佣金提现",
+		        "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#FFFFFF"
+		    }
+		}
     ],
 	"tabBar": {
 		"color": "#8C8C8C",

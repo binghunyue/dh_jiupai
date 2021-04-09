@@ -77,7 +77,7 @@
 			</view>
 		</view>
 		<view class="card u-m-t-14">
-			<view class="u-flex">
+			<view class="u-flex" @click="goToPage('share')">
 				<u-image :src="$util.getStaticImg('share@2x.png')" width="44" height="44"></u-image>
 				<text class="u-p-l-34">邀请好友</text>
 			</view>
@@ -133,6 +133,9 @@ export default {
 					break;
 				case 'pickUp':
 					this.$u.route('/other-pages/order/pick-up-goods-order');
+					break;
+				case 'share':
+					this.$u.route('/other-pages/share/share');
 					break;
 			}
 		},
