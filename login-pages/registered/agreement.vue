@@ -25,7 +25,10 @@ export default {
 	},
 	methods:{
 		submit(){
-			this.$u.route('/login-pages/registered/registered');
+			this.$u.route({
+				type:'redirectTo',
+				url:'/login-pages/registered/registered'
+			});
 		}
 	}
 };

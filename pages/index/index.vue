@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<u-swiper :list="list" mode="none" :effect3d="true" bg-color="transparent" @click="clickSwiper"></u-swiper>
+		<u-swiper :list="list" mode="none" name="thumb" :effect3d="true" bg-color="transparent" @click="clickSwiper"></u-swiper>
 		<u-gap height="40"></u-gap>
 		<!-- 公告 -->
 		<view class="announcement u-flex">
@@ -12,12 +12,12 @@
 		<view class="session">
 			<view v-for="(item, index) in dataList" :key="index" class="session-item">
 				<u-gap height="50"></u-gap>
-				<text class="time">{{ item.time }}</text>
+				<text class="time">{{ item.title }}</text>
 				<u-gap height="30"></u-gap>
 				<view class="image-box" @click="goSession(item)">
-					<view class="state">{{ item.state }}</view>
-					<view class="period-time">{{ item.startTime }}-{{ item.endTime }}</view>
-					<u-image width="100%" height="100%" :src="item.image"></u-image>
+					<view class="state">{{ item.is_start ? '已开拍' : '未开始' }}</view>
+					<view class="period-time">{{ item.start_time }}-{{ item.end_time }}</view>
+					<u-image width="100%" height="100%" :src="item.advimg"></u-image>
 				</view>
 			</view>
 		</view>
@@ -30,52 +30,40 @@ export default {
 	data() {
 		return {
 			href: 'https://uniapp.dcloud.io/component/README?id=uniui',
-			list: [
-				{
-					image: 'https://cdn.uviewui.com/uview/swiper/1.jpg',
-					title: '昨夜星辰昨夜风，画楼西畔桂堂东'
-				},
-				{
-					image: 'https://cdn.uviewui.com/uview/swiper/2.jpg',
-					title: '身无彩凤双飞翼，心有灵犀一点通'
-				},
-				{
-					image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
-					title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
-				}
-			],
-			noticeList: ['寒雨连江夜入', '平明送客楚山孤', '洛阳亲友如相问', '一片冰心在玉壶'],
+			list: [],
+			noticeList: [],
 			moreBtnStyle: {
 				width: '88rpx',
 				height: '40rpx',
 				'font-size': '24rpx'
 			},
-			dataList: [
-				{
-					time: '上午场',
-					image: 'https://cdn.uviewui.com/uview/swiper/1.jpg',
-					state: '已开拍',
-					startTime: '9:30',
-					endTime: '10:30'
-				},
-				{
-					time: '下午场',
-					image: 'https://cdn.uviewui.com/uview/swiper/2.jpg',
-					state: '未开始',
-					startTime: '15:30',
-					endTime: '16:30'
-				},
-				{
-					time: '晚上场',
-					image: 'https://cdn.uviewui.com/uview/swiper/3.jpg',
-					state: '未开始',
-					startTime: '22:30',
-					endTime: '23:30'
-				}
-			]
+			dataList: []
 		};
 	},
+	onLoad() {
+		this.getInfo();
+	},
 	methods: {
+		// 获取首页信息
+		onPullDownRefresh(){
+			this.list = [];
+			this.noticeList = [];
+			this.dataList = [];
+			this.getInfo();
+		},
+		getInfo() {
+			this.$u.post('app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=api.index.get_shopindex').then(res => {
+				// 顶部轮播图
+				this.list = this.list.concat(res.adv);
+				// 公告
+				res.notices.forEach(item => {
+					this.noticeList.push(item.title);
+				});
+				// 场次
+				this.dataList = this.dataList.concat(res.times);
+				uni.stopPullDownRefresh();
+			});
+		},
 		goLogin() {
 			uni.navigateTo({
 				url: '/login-pages/login/login'
@@ -84,13 +72,13 @@ export default {
 		clickSwiper(e) {
 			console.log(e);
 		},
-		goNotice(){
+		goNotice() {
 			this.$u.route('/other-pages/notice/notice');
 		},
-		goSession({time}){
-			this.$u.route('/other-pages/session/list',{
-				pageTitle:time
-			})
+		goSession({ time }) {
+			this.$u.route('/other-pages/session/list', {
+				pageTitle: time
+			});
 		}
 	}
 };
@@ -133,7 +121,7 @@ export default {
 				font-size: 26rpx;
 				color: #f8f8f8;
 				letter-spacing: 0;
-				z-index: 999;
+				z-index: 998;
 			}
 			.period-time {
 				position: absolute;
@@ -145,9 +133,9 @@ export default {
 				left: 0;
 				font-family: PingFangSC-Semibold;
 				font-size: 32rpx;
-				color: #F8F8F8;
+				color: #f8f8f8;
 				letter-spacing: 0;
-				z-index: 998;
+				z-index: 997;
 			}
 		}
 	}

@@ -1,3 +1,23 @@
 export default{
-	static_img_path:'/static/images/'
+	static_img_path:'/static/images/',
+	tabbarList:[
+		{
+			"pagePath":"/pages/index/index",
+			"iconPath":"/static/images/tab_icon_home_selected@2x.png",
+			"selectedIconPath":"/static/images/tab_icon_home@2x.png",
+			"text":"首页",
+		},
+		{
+			"pagePath":"/pages/integral/integral",
+			"iconPath":"/static/images/tab_icon_integral_selected@2x.png",
+			"selectedIconPath":"/static/images/tab_icon_integral@2x.png",
+			"text":"积分商城",
+		},
+		{
+			"pagePath":"/pages/member/member",
+			"iconPath":"/static/images/tab_icon_my_member@2x.png",
+			"selectedIconPath":"/static/images/tab_icon_my_member_selected@2x.png",
+			"text":"会员中心",
+		}
+	]
 }

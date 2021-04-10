@@ -10,10 +10,11 @@
 		<view class="card">
 			<view class="u-flex">
 				<u-avatar :src="$util.getStaticImg('Robotics_logo@2x.png')" size="116"></u-avatar>
-				<view class="u-m-l-24">
+				<view class="u-m-l-24 u-font-36" @click="goLogin">立即登录</view>
+				<!-- <view class="u-m-l-24">
 					<view class="u-font-36 font-semibold">杜秀英</view>
 					<text class="u-font-28 u-type-info">19320625035</text>
-				</view>
+				</view> -->
 			</view>
 			<u-gap height="40"></u-gap>
 			<u-line></u-line>
@@ -138,6 +139,9 @@ export default {
 					this.$u.route('/other-pages/share/share');
 					break;
 			}
+		},
+		goLogin(){
+			this.$u.route('/login-pages/login/login');
 		},
 		// 预约
 		appointment(){

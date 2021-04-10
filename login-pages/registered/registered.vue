@@ -12,7 +12,8 @@
 			<u-form-item prop="code">
 				<u-input v-model="form.code" placeholder="请输入验证码" :custom-style="inputStyle" />
 				<template #right>
-					<text class="send-code">发送验证码</text>
+					<text class="send-code" @click="getCode">{{ tip }}</text>
+					<u-verification-code :seconds="60" ref="uCode" @change="codeChange"></u-verification-code>
 				</template>
 			</u-form-item>
 			<u-gap height="30"></u-gap>
@@ -23,14 +24,14 @@
 			<u-form-item prop="againPassword"><u-input type="password" v-model="form.againPassword" placeholder="请再次输入密码" :custom-style="inputStyle" /></u-form-item>
 			<u-gap height="30"></u-gap>
 			<!-- 邀请码 -->
-			<u-form-item><u-input type="text" v-model="form.inviteCode" :custom-style="inputStyle" /></u-form-item>
+			<u-form-item prop="inviteCode"><u-input type="text" v-model="form.inviteCode" :custom-style="inputStyle" placeholder="请输入邀请码" /></u-form-item>
 			<u-gap height="210"></u-gap>
 			<u-button :custom-style="submitStyle" @click="submit">注册</u-button>
 			<u-gap height="40"></u-gap>
 			<view class="u-text-center">
 				<text class="u-font-26 u-type-info">
 					已注册用户点击
-					<text class="u-type-primary u-p-10">立即下载</text>
+					<text class="u-type-primary u-p-10" @click="goDownLoad">立即下载</text>
 				</text>
 			</view>
 		</u-form>
@@ -47,42 +48,49 @@ export default {
 				code: '',
 				password: '',
 				againPassword: '',
-				inviteCode: '39QH72EF'
+				inviteCode: ''
 			},
 			rules: {
 				phone: [
 					{
 						required: true,
-						message: '请输入手机号',
-						trigger: ['change', 'blur']
+						message: '请输入手机号'
 					},
 					{
 						validator: (rule, value, callback) => {
 							return this.$u.test.mobile(value);
 						},
-						message: '您输入的手机号不合法',
-						trigger: 'blur'
+						message: '您输入的手机号不合法'
 					}
 				],
 				code: [
 					{
 						required: true,
-						message: '请输入验证码',
-						trigger: ['change', 'blur']
+						message: '请输入验证码'
 					}
 				],
 				password: [
 					{
 						required: true,
-						message: '请输入密码',
-						trigger: ['change', 'blur']
+						message: '请输入密码'
 					}
 				],
 				againPassword: [
 					{
 						required: true,
-						message: '请输入密码',
-						trigger: ['change', 'blur']
+						message: '请输入密码'
+					},
+					{
+						validator: (rule, value, callback) => {
+							return this.$u.test.contains(value, this.form.password);
+						},
+						message: '您两次输入的密码不同'
+					}
+				],
+				inviteCode: [
+					{
+						required: true,
+						message: '请输入邀请码'
 					}
 				]
 			},
@@ -95,11 +103,61 @@ export default {
 			},
 			inputStyle: {
 				'font-size': '32rpx'
-			}
+			},
+			tip: ''
 		};
 	},
 	onReady() {
 		this.$refs.myInfo.setRules(this.rules);
+	},
+	methods: {
+		codeChange(text) {
+			this.tip = text;
+		},
+		getCode() {
+			if (!this.$u.test.mobile(this.form.phone)) {
+				this.$u.toast('请输入正确的手机号');
+				return false;
+			}
+			if (this.$refs.uCode.canGetCode) {
+				this.$u
+					.post('app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=api.account.verifycode', {
+						mobile: this.form.phone,
+						temp: 'sms_reg'
+					})
+					.then(res => {
+						this.$refs.uCode.start();
+					});
+			} else {
+				this.$u.toast('倒计时结束后再发送');
+			}
+		},
+		submit() {
+			this.$refs.myInfo.validate(valid => {
+				if (valid) {
+					this.$u
+						.post('app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=api.account.register', {
+							mobile: this.form.phone,
+							verifycode: this.form.code,
+							pwd: this.form.password,
+							parent: this.form.inviteCode
+						})
+						.then(res => {
+							// #ifndef H5
+							setTimeout(()=>{
+								this.$u.route({
+									type:'navigateBack',
+									delta:1
+								});
+							},1600)
+							// #endif
+						});
+				}
+			});
+		},
+		goDownLoad(){
+			this.$u.route('/h5-pages/download-app/download-app');
+		}
 	}
 };
 </script>

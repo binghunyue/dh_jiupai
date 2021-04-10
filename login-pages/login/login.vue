@@ -8,11 +8,11 @@
 		<u-gap height="120"></u-gap>
 		<u-form :model="form" ref="myInfo" :error-type="errorType" :border-bottom="false">
 			<u-form-item left-icon="/static/images/Robotics_zh@2x.png" :left-icon-style="iconStyle" prop="account" :border-bottom="false">
-				<u-input v-model="form.account" placeholder="请输入账号"/>
+				<u-input v-model="form.account" placeholder="请输入账号" />
 			</u-form-item>
 			<u-gap height="30"></u-gap>
 			<u-form-item left-icon="/static/images/Robotics_mm@2x.png" :left-icon-style="iconStyle" prop="password" :border-bottom="false">
-				<u-input type="password" v-model="form.password" placeholder="请输入密码"/>
+				<u-input type="password" v-model="form.password" placeholder="请输入密码" />
 			</u-form-item>
 			<u-gap height="100"></u-gap>
 			<u-button :custom-style="submitStyle" @click="submit">提交</u-button>
@@ -27,9 +27,7 @@
 			<view class="u-padding-60 u-text-center">
 				<text class="font-semibold u-font-36">告知书</text>
 				<u-gap height="40"></u-gap>
-				<scroll-view scroll-y="true" class="content">
-					<rich-text nodes=""></rich-text>
-				</scroll-view>
+				<scroll-view scroll-y="true" class="content"><rich-text nodes=""></rich-text></scroll-view>
 				<u-gap height="40"></u-gap>
 				<u-button :custom-style="agreeStyle">同意</u-button>
 				<u-gap height="10"></u-gap>
@@ -43,25 +41,23 @@
 export default {
 	data() {
 		return {
+			// 18156825246   123456（测试）
 			form: {
 				account: '',
 				password: ''
 			},
-			errorType: ['none'],
+			errorType: ['toast'],
 			rules: {
 				account: [
 					{
 						required: true,
-						message: '请输入账号',
-						// 可以单个或者同时写两个触发验证方式
-						trigger: ['change', 'blur']
+						message: '请输入账号'
 					}
 				],
 				password: [
 					{
 						required: true,
-						message: '请输入密码',
-						trigger: ['change', 'blur']
+						message: '请输入密码'
 					}
 				]
 			},
@@ -77,24 +73,24 @@ export default {
 				color: '#F8F8F8',
 				height: '96rpx'
 			},
-			agreeStyle:{
+			agreeStyle: {
 				'background-color': '#111C3A',
 				'font-family': 'PingFangSC-Semibold',
 				'font-size': '28rpx',
 				color: '#F8F8F8',
-				width:'530rpx',
+				width: '530rpx',
 				height: '80rpx'
 			},
-			noAgreeStyle:{
+			noAgreeStyle: {
 				'background-color': 'transparent',
 				'font-family': 'PingFangSC-Semibold',
 				'font-size': '28rpx',
 				color: '#282828',
-				width:'530rpx',
+				width: '530rpx',
 				height: '80rpx',
-				border:'none'
+				border: 'none'
 			},
-			informBook:true, // 是否显示告知书弹窗
+			informBook: true // 是否显示告知书弹窗
 		};
 	},
 	onReady() {
@@ -104,15 +100,27 @@ export default {
 		registered() {
 			this.$u.route('/login-pages/registered/agreement');
 		},
-		forgetPassword(){
+		forgetPassword() {
 			this.$u.route('/login-pages/reset-password/reset-password');
 		},
 		submit() {
 			this.$refs.myInfo.validate(valid => {
 				if (valid) {
-					console.log('验证通过');
-				} else {
-					console.log('验证失败');
+					this.$u
+						.post('app/index.php?i=1&c=entry&m=ewei_shopv2&do=mobile&r=api.account.login', {
+							mobile: this.form.account,
+							pwd: this.form.password
+						})
+						.then(res => {
+							let lifeData = {
+								vuex_token: res.token
+							};
+							uni.setStorageSync('lifeData', lifeData);
+							this.$u.route({
+								type:'reLaunch',
+								url:'/pages/index/index'
+							})
+						});
 				}
 			});
 		}
@@ -143,7 +151,7 @@ export default {
 			letter-spacing: 0;
 		}
 	}
-	.content{
+	.content {
 		width: 532rpx;
 		height: 560rpx;
 	}
