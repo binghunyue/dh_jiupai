@@ -58,7 +58,15 @@
 			"path": "other-pages/notice/notice",
 			"style": {
 				"navigationStyle": "custom",
-				"navigationBarTitleText": "公告"
+				"navigationBarTitleText": "公告",
+				"enablePullDownRefresh":true
+			}
+		},
+		{
+			"path": "other-pages/notice/notice-detail",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "公告详情"
 			}
 		},
 		// 场次
